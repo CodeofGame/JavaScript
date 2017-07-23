@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset=utf-8">
+		<style>
+			div{
+				width:60px;
+				height:60px;
+				border-radius:50px;
+				margin:10px;
+			}
+			div.blue{
+				background-color:blue
+			}
+			div.green{
+				background-color:green;
+			}
+			div.yellow{
+				background-color:yellow;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="blue" style="margin-left:0;"></div>
+		<div class="green" style="margin-left:0;"></div>
+		<div class="yellow" style="margin-left:0;"></div>
+		<script>
+			var blue=document.querySelector(".blue");
+			var green=document.querySelector(".green");
+			var yellow=document.querySelector(".yellow");
+			animate(blue,200,function(){
+				animate(green,400,function(){
+					animate(yellow,600,function(){
+						animate(blue,400,function(){
+							animate(yellow,400,function(){
+								animate(green,400,function(){
+									
+								})
+							})
+						})
+					})
+				})
+			});
+			function animate(ball,distance,callback){
+				var marginLeft=parseInt(ball.style.marginLeft.replace("px",""),10);
+				//console.log(marginLeft);
+				setTimeout(function(){
+					if(marginLeft===distance){
+						callback && callback();
+					}
+					else
+					{
+						if(marginLeft < distance){
+							marginLeft++;
+						}
+						if(marginLeft > distance){
+							marginLeft--;
+						}
+						ball.style.marginLeft=marginLeft+"px";
+						animate(ball,distance,callback);						
+					}
+				},5)
+			}
+		</script>
+	</body>
+</html>
