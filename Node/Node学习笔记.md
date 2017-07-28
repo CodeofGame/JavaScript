@@ -35,5 +35,33 @@ http.createServer(function(req,res){
 
 **错误**:`var content-length=str.length;`
 
+### stream.pipe()优化数据传输
 
+将a.txt的内容写入b.txt
 
+```javascript
+var readStream=fs.createReadStream("a.txt");
+var writeStream=fs.createWriteStream("b.txt");
+readStream.pipe(writeStream);
+```
+
+所有的readStream都能接受一个writeStream,http的
+
+request请求就是一个readStream
+
+response响应是一个writeStream
+
+可以使用req.pipe(fs.createWriteStream("log.txt"));
+
+```javascript
+//简化服务器的实现
+http.createServer(function(req,res){
+  var root=__dirname;
+  var path=url.parse(req.url).pathname;
+  fs.createReadStream(path.join(root,path)).pipe(res);
+})
+```
+
+**注意**`res.end()`会在`stream.pipe()`内部调用
+
+这只是一个简单的文件服务器，还应该添加错误处理机制
