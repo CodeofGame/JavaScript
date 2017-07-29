@@ -65,3 +65,100 @@ http.createServer(function(req,res){
 **注意**`res.end()`会在`stream.pipe()`内部调用
 
 这只是一个简单的文件服务器，还应该添加错误处理机制
+
+## 异常处理
+
+所有继承EventEmitter的类都可能发出error事件，例如`fs.createReadStream(path)`如果文件不存在，或者文件不允许访问，这个方法会报错，所以我们应该添加一个监听器，来处理这些异常。
+
+```javascript
+var stream=fs.createReadStream(path);
+stream.pipe(res);
+stream.on("error",function(err){
+  console.log("error !");
+})
+
+```
+
+#### fs.stat()方法
+
+获取文件的信息使用案例
+
+```javascript
+fs.stat(relativePath,function(err,stat){
+		if(err){
+			console.log(err.code);
+            //一个错误的全局返回码，node官网可查
+			if(err.code=="ENOENT"){
+				res.statusCode=404;
+				res.end("Not Found!!");
+			}
+			else{
+				res.statusCode=500;
+				res.end("500 internal error!!");
+			}
+		}
+		else{
+            //stat对象可以获取到文件的大小
+			res.setHeader("Content-Length",stat.size);
+			let stream=fs.createReadStream(relativePath);
+			stream.pipe(res);
+			stream.on("error",function(err){
+				res.statusCode=500;
+				res.end("500 internal error!!");
+			})
+		}
+	})	
+```
+
+### 从表单中接收用户输入
+
+新建一个简单的表单
+
+```html
+<form method="post" action="/"> 
+	<p><input type="text" name="item"></p>
+	<p><input type="submit" value="add item"></p>
+</form>
+```
+
+#### 怎么获取post的数据
+
+当点击add item按钮时向/地址发送请求，后端js代码为
+
+```javascript
+//获取post的数据
+var fs=require("querystring");
+var data="";
+req.setEncoding("utf8");
+req.on("data",function(chunk){
+  data+=chunk;
+})
+//通过qs.parse(str)可以将一个查询字符串解析成字符串
+var item=qs.parse(url).item;
+console.log(item);
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
