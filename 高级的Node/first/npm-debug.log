@@ -1,0 +1,53 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'D:\\1.安装软件\\NodeJs\\node.exe',
+1 verbose cli   'D:\\1.安装软件\\NodeJs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'search',
+1 verbose cli   'express' ]
+2 info using npm@3.10.10
+3 info using node@v6.10.3
+4 silly mapToRegistry name -/all
+5 silly mapToRegistry using default registry
+6 silly mapToRegistry registry https://registry.npmjs.org/
+7 silly mapToRegistry data Result {
+7 silly mapToRegistry   raw: '-/all',
+7 silly mapToRegistry   scope: null,
+7 silly mapToRegistry   escapedName: null,
+7 silly mapToRegistry   name: null,
+7 silly mapToRegistry   rawSpec: '-/all',
+7 silly mapToRegistry   spec: '-/all',
+7 silly mapToRegistry   type: 'local' }
+8 silly mapToRegistry uri https://registry.npmjs.org/-/all
+9 info updateIndex C:\Users\Administrator\AppData\Roaming\npm-cache\registry.npmjs.org\-\all\.cache.json
+10 verbose correctMkdir C:\Users\Administrator\AppData\Roaming\npm-cache correctMkdir not in flight; initializing
+11 warn Building the local index for the first time, please be patient
+12 silly update-index fetching https://registry.npmjs.org/-/all
+13 verbose request uri https://registry.npmjs.org/-/all
+14 verbose request no auth needed
+15 info attempt registry request try #1 at 16:57:10
+16 verbose request id 4f8bd578020089c2
+17 http request GET https://registry.npmjs.org/-/all
+18 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+19 info attempt registry request try #2 at 16:57:32
+20 http request GET https://registry.npmjs.org/-/all
+21 info retry will retry, error on last attempt: Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+22 info attempt registry request try #3 at 16:58:43
+23 http request GET https://registry.npmjs.org/-/all
+24 verbose stack Error: getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+24 verbose stack     at errnoException (dns.js:28:10)
+24 verbose stack     at GetAddrInfoReqWrap.onlookup [as oncomplete] (dns.js:76:26)
+25 verbose cwd E:\1.NodeStudy\高级的Node\first
+26 error Windows_NT 6.1.7601
+27 error argv "D:\\1.安装软件\\NodeJs\\node.exe" "D:\\1.安装软件\\NodeJs\\node_modules\\npm\\bin\\npm-cli.js" "search" "express"
+28 error node v6.10.3
+29 error npm  v3.10.10
+30 error code ENOTFOUND
+31 error errno ENOTFOUND
+32 error syscall getaddrinfo
+33 error network getaddrinfo ENOTFOUND registry.npmjs.org registry.npmjs.org:443
+34 error network This is most likely not a problem with npm itself
+34 error network and is related to network connectivity.
+34 error network In most cases you are behind a proxy or have bad network settings.
+34 error network
+34 error network If you are behind a proxy, please make sure that the
+34 error network 'proxy' config is set properly.  See: 'npm help config'
+35 verbose exit [ 1, true ]
