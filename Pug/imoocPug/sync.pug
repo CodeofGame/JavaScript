@@ -1,0 +1,56 @@
+doctype html
+html
+  head
+    meta(charst="utf-8")
+    title 学习pug
+  body
+    h1.className#idName 一级标题1
+    h2 二级标题
+    h3 三级标题
+    h4 四级标题
+    h5 五级标题
+    a(href="http://www.baidu.com") 百度
+    input(type="text",value="姓名")
+    input(type="radio",checked)
+    input(type="checkbox",checked)
+    p 1.a 2.b 3.c 4.d 
+    h1 在文本中写html标签
+    p
+      | 1.a
+      strong 粗体字
+      | 2.b
+      | 3.c
+      | 4.d
+      span 标签
+    p.
+      1.a<strong>粗体字</strong>
+      2.b
+      3.c
+      4.d <span标签</span>             
+    h1 注释  
+    // h1 注释（会编译到html文档中）
+    //- h2 注释（不会编译大html文档中）
+    // 块级注释,让//作为要注释代码块的父元素
+    h2 变量声明
+    - var course="jade"
+    h1 #{course}
+    table
+      th
+        td 编号
+        td 姓名
+        td 性别
+      tr
+        td #{id}
+        td #{name}
+        td=gender
+    - var data="text"
+    - var htmlData="<script>alert(1);</script><span>script</span>;
+    p #{data}
+    p !{htmlData}   
+    p \#{输出花括号}
+    
+    
+    
+    
+    
+  

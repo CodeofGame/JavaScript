@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    title 循环和条件分支
+    style.
+       *{color:read}
+  body
+    h1 for循环，遍历对象,支持js原生写法
+    - var obj={id:001,name:"zhangsan",gender:"nan"}
+    - for(var x in obj)
+      p= obj[x]
+    h1 each循环，可以理解为pug特殊的标签
+    each value,key in obj
+      p value:#{value}
+      p Key:#{key}
+    h1 each的数组遍历
+    - var course=["英语","语文","数学"]
+    ul
+    each item in course
+      li= item
+    h1 each嵌套循环
+    - var userList=[{id:"001",name:"张三",courses:[10,20,30]},{id:"002",name:"李四",courses:[30,40,50]}]
+    ul
+    each x in  userList
+      li= x.id
+      li= x.name
+      ul
+      each y in x.courses
+        li= y
+    h1 if/else的使用
+      
+    
+    
